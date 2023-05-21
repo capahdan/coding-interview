@@ -3,5 +3,9 @@ package word
 import "strings"
 
 func WordCount(s string) int {
-	return strings.Count(s, " ")
+	if strings.Count(s, " ") == 0 {
+		return 1
+	}
+
+	return strings.Count(s, " ") + 1
 }
