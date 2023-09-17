@@ -37,9 +37,9 @@ func MaxProfit(prices []int) int {
 
 	// chat gpt solution
 
-	lsf := math.MaxInt
-	op := 0
-	pist := 0
+	lsf := math.MaxInt // least so far
+	op := 0            // optimum price
+	pist := 0          // price if i sell today
 
 	for i := 0; i < len(prices); i++ {
 		if prices[i] < lsf {
