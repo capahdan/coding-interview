@@ -6,8 +6,6 @@ type ListNode struct {
 }
 
 func HasCycle(head *ListNode) bool {
-
-	// we create 2 pointer , 1 slow and 1 move 2 times
 	if head == nil {
 		return false
 	}
@@ -15,7 +13,7 @@ func HasCycle(head *ListNode) bool {
 	slowPointer := head
 	fastPointer := head
 
-	for slowPointer.Next != nil && fastPointer.Next != nil {
+	for fastPointer != nil && fastPointer.Next != nil {
 		slowPointer = slowPointer.Next
 		fastPointer = fastPointer.Next.Next
 
