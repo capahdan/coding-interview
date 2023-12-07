@@ -24,11 +24,3 @@ func MinSubArrayLen(target int, nums []int) int {
 	}
 	return minLength
 }
-
-// min := Math.Min()
-
-// 2,3,1,2,4,3
-
-// min := []int
-
-//
