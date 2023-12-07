@@ -40,14 +40,14 @@ func TestMinSubArrayLen(t *testing.T) {
 			},
 			expected: 1,
 		},
-		// {
-		// 	name: "test3",
-		// 	input: Number{
-		// 		target: 11,
-		// 		nums:   []int{1, 1, 1, 1, 1, 1, 1, 1},
-		// 	},
-		// 	expected: 0,
-		// },
+		{
+			name: "test3",
+			input: Number{
+				target: 11,
+				nums:   []int{1, 1, 1, 1, 1, 1, 1, 1},
+			},
+			expected: 0,
+		},
 	}
 
 	for _, tt := range testTable {
