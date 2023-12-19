@@ -29,36 +29,36 @@ package longest_consecutive
 // 	return result
 // }
 
-func LongestConsecutive(nums []int) int {
-	if len(nums) == 0 {
-		return 0
-	}
+// func LongestConsecutive(nums []int) int {
+// 	if len(nums) == 0 {
+// 		return 0
+// 	}
 
-	maxLength := 0
-	numMap := make(map[int]int)
+// 	maxLength := 0
+// 	numMap := make(map[int]int)
 
-	for _, num := range nums {
-		if _, exists := numMap[num]; !exists {
-			left := numMap[num-1]
-			right := numMap[num+1]
+// 	for _, num := range nums {
+// 		if _, exists := numMap[num]; !exists {
+// 			left := numMap[num-1]
+// 			right := numMap[num+1]
 
-			// sum is the length of the sequence num is in
-			sum := left + right + 1
-			numMap[num] = sum
+// 			// sum is the length of the sequence num is in
+// 			sum := left + right + 1
+// 			numMap[num] = sum
 
-			// update the max length
-			if sum > maxLength {
-				maxLength = sum
-			}
+// 			// update the max length
+// 			if sum > maxLength {
+// 				maxLength = sum
+// 			}
 
-			// extend the length to the boundaries of the sequence
-			numMap[num-left] = sum
-			numMap[num+right] = sum
-		}
-	}
+// 			// extend the length to the boundaries of the sequence
+// 			numMap[num-left] = sum
+// 			numMap[num+right] = sum
+// 		}
+// 	}
 
-	return maxLength
-}
+// 	return maxLength
+// }
 
 // urutkan nums secara asc
 //
@@ -72,3 +72,31 @@ func LongestConsecutive(nums []int) int {
 //
 
 //
+
+func LongestConsecutive(nums []int) int {
+	numSet := make(map[int]bool)
+	for _, num := range nums {
+		numSet[num] = true
+	}
+
+	best := 0
+	for num := range numSet {
+		if !numSet[num-1] {
+			y := num + 1
+			for numSet[y] {
+				y++
+			}
+			if y-num > best {
+				best = y - num
+			}
+		}
+	}
+	return best
+}
+
+// ubah semua number jadi set
+// lalu iterasi setiap set
+// jika nilai set  value-1 tidak ada di dalam set
+//     iterasi set  value+1
+//     jika ada kita update
+//     nilai bestnya
