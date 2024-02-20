@@ -1,5 +1,7 @@
 package reverse_bit
 
+import "strings"
+
 // func ReverseBit(num uint32) uint32 {
 
 // 	binaryStr := parseToBit(num)
@@ -12,25 +14,25 @@ package reverse_bit
 // 	return reversedInt
 // }
 
-// func parseToBit(num uint32) string {
-// 	var res strings.Builder
+func parseToBit(num int) string {
+	var res strings.Builder
 
-// 	for num != 0 {
-// 		num = num / 2
-// 		res.WriteByte(byte(num%2) + '0')
-// 	}
+	for num != 0 {
+		num = num / 2
+		res.WriteByte(byte(num%2) + '0')
+	}
 
-// 	result := res.String()
-// 	return reverse(result)
-// }
+	result := res.String()
+	return reverse(result)
+}
 
-// func reverse(s string) string {
-// 	runes := []rune(s)
-// 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
-// 		runes[i], runes[j] = runes[j], runes[i]
-// 	}
-// 	return string(runes)
-// }
+func reverse(s string) string {
+	runes := []rune(s)
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
+}
 
 // func strToInt(str string) uint32 {
 // 	var result uint32
