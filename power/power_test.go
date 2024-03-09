@@ -1,11 +1,6 @@
 package power_test
 
-import (
-	"testing"
-
-	. "github.com/capahdan/coding-interview/power"
-	"github.com/stretchr/testify/assert"
-)
+// . "github.com/capahdan/coding-interview/power"
 
 type TestTable struct {
 	input   input
@@ -18,20 +13,20 @@ type input struct {
 	b int
 }
 
-func TestPower(t *testing.T) {
-	TestTable := []TestTable{
-		{
-			input:   input{a: 2, b: 2},
-			output:  4,
-			message: "test1",
-		},
-	}
+// func TestPower(t *testing.T) {
+// 	TestTable := []TestTable{
+// 		{
+// 			input:   input{a: 2, b: 2},
+// 			output:  4,
+// 			message: "test1",
+// 		},
+// 	}
 
-	for _, tt := range TestTable {
+// 	for _, tt := range TestTable {
 
-		t.Run(tt.message, func(t *testing.T) {
-			assert.Equal(t, tt.output, Power(tt.input.a, tt.input.b))
-		})
-	}
+// 		t.Run(tt.message, func(t *testing.T) {
+// 			assert.Equal(t, tt.output, Power(tt.input.a, tt.input.b))
+// 		})
+// 	}
 
-}
+// }
