@@ -1,4 +1,4 @@
-package word_pattern_test
+package contain_duplicate_2_test
 
 import (
 	"testing"

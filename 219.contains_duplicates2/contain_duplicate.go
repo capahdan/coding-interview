@@ -1,4 +1,4 @@
-package word_pattern
+package contain_duplicate_2
 
 import "fmt"
 
