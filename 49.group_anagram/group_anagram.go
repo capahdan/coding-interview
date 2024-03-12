@@ -1,26 +1,16 @@
 package group_anagram
 
-import (
-	"sort"
-	"strings"
-)
-
 func GroupAnagrams(strs []string) [][]string {
 	var result [][]string
 
-	anagramMap := make(map[string][]string)
+	anagramMap := make(map[[26]int][]string)
 
 	for _, str := range strs {
-		splitted := strings.Split(str, "")
-		sort.Strings(splitted)
-		sortedStr := strings.Join(splitted, "")
-
-		if data, ok := anagramMap[sortedStr]; ok {
-			anagramMap[sortedStr] = append(data, str)
-		} else {
-
-			anagramMap[sortedStr] = []string{str}
+		k := [26]int{}
+		for i := 0; i < len(str); i++ {
+			k[str[i]-'a'] += 1
 		}
+		anagramMap[k] = append(anagramMap[k], str)
 	}
 
 	for _, value := range anagramMap {
