@@ -17,16 +17,16 @@ func TestJumpGame(t *testing.T) {
 
 	testtable := []testTable{
 
-		{
-			message: "test1",
-			input:   []int{2, 3, 1, 1, 4},
-			output:  2,
-		},
 		// {
-		// 	message: "test 2",
-		// 	input:   []int{2, 3, 0, 1, 4},
+		// 	message: "test1",
+		// 	input:   []int{2, 3, 1, 1, 4},
 		// 	output:  2,
 		// },
+		{
+			message: "test 2",
+			input:   []int{2, 3, 0, 1, 4},
+			output:  2,
+		},
 	}
 
 	for _, tt := range testtable {

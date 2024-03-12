@@ -1,40 +1,59 @@
 package jump_game
 
-import "math"
-
 func JumpGame(nums []int) int {
-
-	// x := 0
-	n := len(nums) - 1
-	mov := math.MaxInt32
+	goal := len(nums) - 1
+	lastIdx := 0
+	coverage := 0
+	jump := 0
 
 	for i := range nums {
-		for j := nums[i]; i >= 1; j-- {
-			jump := 0
-			k := nums[j]
-			for k <= n {
-				jump++
-				k += nums[k]
+		coverage = max(coverage, i+nums[i])
+
+		if i == lastIdx {
+			lastIdx = coverage
+			jump++
+
+			if coverage >= goal {
+				return jump
 			}
-
-			mov = min(mov, jump)
 		}
-
 	}
 
-	return mov
+	return jump
 }
 
-func min(a, b int) int {
-	if a < b {
+func max(a, b int) int {
+	if a > b {
 		return a
 	}
 	return b
 }
 
-// [2, 3, 1, 1, 4]
-//  i
-//  j
+// [2,3,1,1,4]
+//
+//
 
-// 0
-// 2
+func jump(nums []int) int {
+	totalJumps := 0
+	destination := len(nums) - 1
+	coverage, lastJumpIdx := 0, 0
+
+	if len(nums) == 1 {
+		return 0
+	}
+
+	for i := 0; i < len(nums); i++ {
+		coverage = max(coverage, i+nums[i])
+
+		if i == lastJumpIdx {
+			lastJumpIdx = coverage
+			totalJumps++
+
+			if coverage >= destination {
+				return totalJumps
+			}
+		}
+	}
+
+	return totalJumps
+}

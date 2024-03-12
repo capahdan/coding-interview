@@ -1,14 +1,14 @@
 package jump_game
 
-import "math"
-
 func CanJump(nums []int) bool {
-	dis := 0
-	for i := 0; i <= dis; i++ {
-		dis = int(math.Max(float64(dis), float64(i+nums[i])))
-		if dis >= len(nums)-1 {
-			return true
+	goal := len(nums) - 1
+
+	for i := goal; i >= 0; i-- {
+		if i+nums[i] >= goal {
+			goal = i
 		}
+
 	}
-	return false
+
+	return goal == 0
 }
