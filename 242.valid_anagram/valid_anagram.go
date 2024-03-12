@@ -1,43 +1,31 @@
 package valid_anagram
 
-import "strings"
-
 func ValidAnagram(s, t string) bool {
 	if len(s) != len(t) {
 		return false
 	}
-	splitedS := strings.Split(s, "")
-	splittedT := strings.Split(t, "")
 
-	sortedS := mergeSort(splitedS)
-	sortedT := mergeSort(splittedT)
+	arrS := []string{}
+	arrT := []string{}
 
-	for i := range sortedS {
-		if sortedS[i] != sortedT[i] {
+	for i := range s {
+		arrS = append(arrS, string(s[i]))
+	}
+
+	for j := range t {
+		arrT = append(arrT, string(t[j]))
+	}
+
+	arrS = mergeSort(arrS)
+	arrT = mergeSort(arrT)
+
+	for k := range arrS {
+		if arrS[k] != arrT[k] {
 			return false
 		}
 	}
+
 	return true
-}
-
-func merge(left, right []string) []string {
-	result := make([]string, 0, len(left)+len(right))
-	i, j := 0, 0
-
-	for i < len(left) && j < len(right) {
-		if left[i] < right[j] {
-			result = append(result, left[i])
-			i++
-		} else {
-			result = append(result, right[j])
-			j++
-		}
-	}
-
-	result = append(result, left[i:]...)
-	result = append(result, right[j:]...)
-
-	return result
 }
 
 func mergeSort(arr []string) []string {
@@ -45,8 +33,29 @@ func mergeSort(arr []string) []string {
 		return arr
 	}
 	mid := len(arr) / 2
+
 	left := mergeSort(arr[:mid])
 	right := mergeSort(arr[mid:])
 
 	return merge(left, right)
+}
+
+func merge(a, b []string) []string {
+	result := make([]string, len(a)+len(b)-1)
+	i, j := 0, 0
+
+	for i < len(a) && j < len(b) {
+		if a[i] < b[j] {
+			result = append(result, a[i])
+			i++
+		} else {
+			result = append(result, b[j])
+			j++
+		}
+	}
+
+	result = append(result, a[i:]...)
+	result = append(result, b[j:]...)
+
+	return result
 }
