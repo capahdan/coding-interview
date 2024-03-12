@@ -1,7 +1,6 @@
 package longest_common_prefix
 
 import (
-	"math"
 	"sort"
 )
 
@@ -17,7 +16,7 @@ func LongestCommonPrefix(strs []string) string {
 	last := strs[len(strs)-1]
 	resultStr := ""
 
-	minLen := int(math.Min(float64(len(first)), float64(len(last))))
+	minLen := min(len(first), len(last))
 
 	for i := 0; i < minLen; i++ {
 		if first[i] != last[i] {
@@ -27,4 +26,11 @@ func LongestCommonPrefix(strs []string) string {
 	}
 
 	return resultStr
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }
