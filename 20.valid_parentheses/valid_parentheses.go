@@ -1,11 +1,13 @@
 package valid_parentheses
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func IsValid(s string) bool {
 	stack := Stack{}
+
 	for i := range s {
-		fmt.Println(string(s[i]))
 		switch s[i] {
 		case '(':
 			stack.Push('(')

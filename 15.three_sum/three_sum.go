@@ -1,20 +1,39 @@
 package three_sum
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func ThreeSum(nums []int) [][]int {
-	mapArr := make(map[string][]int)
 
-	for i := len(nums) - 1; i >= 2; i-- {
+	tempMap := map[string][]int{}
+	result := [][]int{}
+	// temp := make([]int, len(nums)-1)
 
-		if nums[i]+nums[i-1]+nums[i-2] == 0 {
-			mapArr[fmt.Sprintf("%d-%d-%d", i, i-1, i-2)] = []int{nums[i], nums[i-1], nums[i-2]}
+	sort.Ints(nums)
+	for i := 0; i < len(nums)-1; i++ {
+		target := 0 - nums[i]
+
+		l := i + 1
+		r := len(nums) - 1
+		for l < r {
+
+			temp := nums[l] + nums[r]
+			if target == temp {
+				if i != l && i != r && l != r {
+					tempMap[fmt.Sprintf("%d-%d-%d", nums[i], nums[l], nums[r])] = []int{nums[i], nums[l], nums[r]}
+				}
+			}
+			if temp < target {
+				l++
+			} else {
+				r--
+			}
 		}
-
 	}
 
-	result := [][]int{}
-	for _, val := range mapArr {
+	for _, val := range tempMap {
 		result = append(result, val)
 	}
 
