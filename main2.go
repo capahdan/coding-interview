@@ -2,10 +2,7 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"io"
-	"os"
-	"strconv"
 	"strings"
 )
 
@@ -196,28 +193,28 @@ func isPerfect(countMap map[rune]int32, k int32) bool {
 	return true
 }
 
-func main() {
-	reader := bufio.NewReaderSize(os.Stdin, 16*1024*1024)
+// func main() {
+// 	reader := bufio.NewReaderSize(os.Stdin, 16*1024*1024)
 
-	stdout, err := os.Create(os.Getenv("OUTPUT_PATH"))
-	checkError(err)
+// 	stdout, err := os.Create(os.Getenv("OUTPUT_PATH"))
+// 	checkError(err)
 
-	defer stdout.Close()
+// 	defer stdout.Close()
 
-	writer := bufio.NewWriterSize(stdout, 16*1024*1024)
+// 	writer := bufio.NewWriterSize(stdout, 16*1024*1024)
 
-	s := readLine(reader)
+// 	s := readLine(reader)
 
-	kTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
-	checkError(err)
-	k := int32(kTemp)
+// 	kTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+// 	checkError(err)
+// 	k := int32(kTemp)
 
-	result := perfectSubstring(s, k)
+// 	result := perfectSubstring(s, k)
 
-	fmt.Fprintf(writer, "%d\n", result)
+// 	fmt.Fprintf(writer, "%d\n", result)
 
-	writer.Flush()
-}
+// 	writer.Flush()
+// }
 
 func readLine(reader *bufio.Reader) string {
 	str, _, err := reader.ReadLine()
