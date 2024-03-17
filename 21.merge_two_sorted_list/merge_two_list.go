@@ -23,28 +23,33 @@ func (ll *LinkedList) Append(data int) {
 	}
 }
 
-func MergeTwoLists(list1, list2 *ListNode) *ListNode {
-	myList := LinkedList{}
+func MergeTwoLists(l1, l2 *ListNode) *ListNode {
+	// Create a dummy node to start the merged list
+	dummy := &ListNode{}
+	// Pointer to the current node in the merged list
+	current := dummy
 
-	for list1 != nil && list2 != nil {
-		if list1.Val < list2.Val {
-			myList.Append(list1.Val)
-			list1 = list1.Next
+	// Iterate until either of the lists becomes nil
+	for l1 != nil && l2 != nil {
+		// Compare values of the two lists and append the smaller one to the merged list
+		if l1.Val < l2.Val {
+			current.Next = l1
+			l1 = l1.Next
 		} else {
-			myList.Append(list2.Val)
-			list2 = list2.Next
+			current.Next = l2
+			l2 = l2.Next
 		}
+		// Move the current pointer forward
+		current = current.Next
 	}
 
-	for list1 != nil {
-		myList.Append(list1.Val)
-		list1 = list1.Next
+	// Append the remaining nodes of the non-nil list
+	if l1 != nil {
+		current.Next = l1
+	} else {
+		current.Next = l2
 	}
 
-	for list2 != nil {
-		myList.Append(list2.Val)
-		list2 = list2.Next
-	}
-
-	return myList.head
+	// Return the merged list starting from the next of the dummy node
+	return dummy.Next
 }
